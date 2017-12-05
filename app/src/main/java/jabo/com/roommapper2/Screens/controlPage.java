@@ -19,7 +19,7 @@ public class controlPage extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_control_page);
         joystick = (JoystickView) findViewById(R.id.joystick);
-
+        new ConnectTask().execute("");
         joystick.setOnJoystickMoveListener(new JoystickView.OnJoystickMoveListener() {
 
             @Override

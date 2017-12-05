@@ -20,7 +20,7 @@ package jabo.com.roommapper2.TCP;
  */
 public class TcpClient {
 
-    public static final String SERVER_IP = "192.168.101.1"; //your computer IP address
+    public static final String SERVER_IP = "192.168.101.11"; //your computer IP address
     public static final int SERVER_PORT = 11000;
     // message to send to the server
     private String mServerMessage;
