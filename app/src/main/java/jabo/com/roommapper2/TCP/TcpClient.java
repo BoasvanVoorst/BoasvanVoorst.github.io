@@ -10,6 +10,7 @@ package jabo.com.roommapper2.TCP;
         import java.io.OutputStreamWriter;
         import java.io.PrintWriter;
         import java.net.InetAddress;
+        import java.net.InetSocketAddress;
         import java.net.Socket;
 
 /**
@@ -19,6 +20,8 @@ package jabo.com.roommapper2.TCP;
  *         Date: 2/12/13
  */
 public class TcpClient {
+
+    final String TAG = "TcpClient";
 
     public static final String SERVER_IP = "192.168.101.11"; //your computer IP address
     public static final int SERVER_PORT = 11000;
@@ -80,12 +83,12 @@ public class TcpClient {
 
         try {
             //here you must put your computer's IP address.
-            InetAddress serverAddr = InetAddress.getByName(SERVER_IP);
-
             Log.e("TCP Client", "C: Connecting...");
 
             //create a socket to make the connection with the server
-            Socket socket = new Socket(serverAddr, SERVER_PORT);
+            Socket socket = new Socket();
+            socket.connect(new InetSocketAddress(SERVER_IP, SERVER_PORT), 10000);
+            //socket.connect(,30*1000);
 
             try {
                 Log.i("Debug", "inside try catch");
