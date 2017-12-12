@@ -20,4 +20,9 @@ public class menu extends Activity {
         Intent intent = new Intent(this,controlPage.class);
         startActivity(intent);
     }
+
+    public void map(View view){
+        Intent intent = new Intent(this,map.class);
+        startActivity(intent);
+    }
 }

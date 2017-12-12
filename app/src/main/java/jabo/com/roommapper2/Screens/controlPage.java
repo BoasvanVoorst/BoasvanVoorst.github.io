@@ -179,7 +179,9 @@ public class controlPage extends Activity {
     protected void onDestroy(){
         super.onDestroy();
         Log.d(TAG, "onDestroy: destroyed");
-        //mTcpClient.stopClient();
+        if (mTcpClient != null){
+            mTcpClient.stopClient();
+        }
         //BT.cancel();
 
     }
