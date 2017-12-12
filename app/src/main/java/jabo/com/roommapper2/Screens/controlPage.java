@@ -87,6 +87,7 @@ public class controlPage extends Activity {
                     i++;
                     devicefound = false;
                     Log.d(deviceName,btdeviceName);
+                    popup("device not found please connect device first");
                     //devices[i] = deviceName;
                     //Log.d(deviceHardwareAddress,btdeviceHardwareAddress);
                     Log.d("Device","not found");
@@ -156,6 +157,7 @@ public class controlPage extends Activity {
         if(state == RUN) {
             if (!roomname.getText().toString().equalsIgnoreCase("")) {
                 state = PAUZE;
+                popup("started");
                 if (mTcpClient != null) {
                     mTcpClient.sendMessage("Start<LOG>");
                 }
@@ -165,16 +167,33 @@ public class controlPage extends Activity {
             }
         }
         else{
+            popup("stopped");
             state = RUN;
             if (mTcpClient != null) {
                 mTcpClient.sendMessage("Stop<LOG>");
             }
         }
     }
-
+    
+    @Override
     protected void onDestroy(){
         super.onDestroy();
+        Log.d(TAG, "onDestroy: destroyed");
+        //mTcpClient.stopClient();
+        //BT.cancel();
 
+    }
+    
+    @Override
+    protected void onPause(){
+        super.onPause();
+        Log.d(TAG, "onPause: paused");
+    }
+    
+    @Override
+    protected void onStop(){
+        super.onStop();
+        Log.d(TAG, "onStop: stopped");
     }
 
     private class ConnectTask extends AsyncTask<String, String, TcpClient> {
